@@ -20,6 +20,7 @@ import flowchart, { renderFlowchart } from './flowchart'
 import dot, { renderDot } from './dot'
 import blockUml from './blockPlantuml'
 import codeUml from './plantuml'
+import d2 from './d2';
 import scrollToLine from './scroll'
 import { meta } from './meta';
 import markdownImSize from './markdown-it-imsize'
@@ -69,6 +70,7 @@ const DEFAULT_OPTIONS = {
     'errorColor': ' #cc0000'
   },
   uml: {},
+  d2: {},
   toc: {
     listType: 'ul'
   }
@@ -187,6 +189,10 @@ export default class PreviewPage extends React.Component {
           ...DEFAULT_OPTIONS.uml,
           ...uml
         })
+	.use(d2, {
+	  ...DEFAULT_OPTIONS.d2,
+	  ...uml
+	})
         .use(emoji)
         .use(taskLists)
         .use(markdownDeflist)
